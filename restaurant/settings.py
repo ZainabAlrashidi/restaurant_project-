@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+#import os 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -54,7 +54,8 @@ ROOT_URLCONF = 'restaurant.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/Users/96655/Desktop/restaurant/restaurant/restaurant/template'],
+        #'DIRS': [os.path.join(BASE_DIR, 'restaurant', 'restaurant', 'template')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
