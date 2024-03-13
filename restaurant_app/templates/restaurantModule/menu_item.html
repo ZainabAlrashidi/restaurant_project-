@@ -1,0 +1,9 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Menu Item Details {% endblock %}
+
+{% block content %}
+<h1>{{ item.name }}</h1>
+<p><strong>Description:</strong> {{ item.description }}</p>
+<p><strong>Price:</strong> ${{ item.price }}</p>
+{% endblock content %}
