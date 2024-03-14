@@ -5,7 +5,7 @@ def index(request):
     # this view returns the main page of the programming platform
     return render(request, 'restaurantModule/index.html')
 
-def menu_items(request):
+def menu_list(request):
 
     # View to display the menu of the restaurant
     menu_items = [
