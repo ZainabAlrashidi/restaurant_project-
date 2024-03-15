@@ -50,5 +50,14 @@
         {% endfor %}
     </tbody>
 </table>
+<ul>
+  {% for item in menu_items %}
+  <li>
+      <strong>{{ item.name }}</strong> - {{ item.description }} - ${{ item.price }} - <a href="{% url 'menu_item' item.id %}">View Details</a>
+  </li>
+  {% empty %}
+  <li>No menu items available.</li>
+  {% endfor %}
+</ul>
 
 {% endblock content %}
