@@ -1,21 +1,33 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Menu List {% endblock %}
+{% block title %}Menu List{% endblock %}
 
 {% block content %}
 <h1>Our Menu</h1>
 
-<ul>
-  {% for item in menu_items %}
-    <li>
-      <h3>{{ item.name }}</h3>
-      <p>Description: {{ item.description }}</p>
-      <p>Price: ${{ item.price }}</p>
-      <a href="{% url 'menu_item' item.id %}">View Details</a>
-    </li>
-  {% empty %}
-    <p>No menu items available.</p>
-  {% endfor %}
-</ul>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in menu_items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>${{ item.price }}</td>
+            <td><a href="{% url 'menu_item' item.id %}">View Details</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No menu items available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock content %}
