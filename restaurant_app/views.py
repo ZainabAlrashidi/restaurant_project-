@@ -9,9 +9,9 @@ def menu_list(request):
 
     # View to display the menu of the restaurant
     menu_items = [
-        {'id': 1, 'name': 'Margherita Pizza', 'description': 'Tomato sauce, mozzarella, and oregano', 'price': 10},
-        {'id': 2, 'name': 'Pepperoni Pizza', 'description': 'Pepperoni, tomato sauce, mozzarella', 'price': 12},
-        {'id': 3, 'name': 'Bruschetta', 'description': 'Grilled bread garlic, tomatoes, olive oil', 'price': 6},
+        {'id': 1, 'name': 'Margherita Pizza', 'description': 'Tomato sauce, mozzarella, and oregano', 'price': 10,'image_url':'https://th.bing.com/th/id/R.93a2878acf479d394d8f4b4b625d39d4?rik=CIVerr9pYI4ovg&pid=ImgRaw&r=0'},
+        {'id': 2, 'name': 'Pepperoni Pizza', 'description': 'Pepperoni, tomato sauce, mozzarella', 'price': 12,'image_url':'https://th.bing.com/th/id/R.6bc900c25a3c9fd172764f38acb02e8c?rik=0tpoICbB17axNg&pid=ImgRaw&r=0'},
+        {'id': 3, 'name': 'Bruschetta', 'description': 'Grilled bread garlic, tomatoes, olive oil', 'price': 6,'image_url':'https://th.bing.com/th/id/OIP.EqQ-crmMwM0DxxOVNoIDAAHaE8?rs=1&pid=ImgDetMain'},
         # Add more items as needed
     ]
     return render(request, 'restaurantModule/menu_list.html', {'menu_items': menu_items})

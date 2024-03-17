@@ -5,59 +5,45 @@
 {% block content %}
 <h1>Our Menu</h1>
 
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-    tr:nth-child(even){background-color: #f9f9f9;}
-    tr:hover {background-color: #ddd;}
-    a {
-        text-decoration: none;
-        color: blue;
-    }
-</style>
 
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Details</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in menu_items %}
-        <tr>
-            <td>{{ item.name }}</td>
-            <td>{{ item.description }}</td>
-            <td>${{ item.price }}</td>
-            <td><a href="{% url 'menu_item' item.id %}">View Details</a></td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="4">No menu items available.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
+
+
+<table >
+<thead>
+    <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Details</th>
+    </tr>
+</thead>
+<tbody>
+    {% for item in menu_items %}
+    <tr>
+        <td><img src="{{ item.image_url }}" alt="{{ item.name }}" class="menu-image"></td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td>${{ item.price }}</td>
+        <td><a href="{% url 'menu_item' item.id %}">View Details</a></td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No menu items available.</td>
+    </tr>
+    {% endfor %}
+</tbody>
 </table>
+
 <ul>
-  {% for item in menu_items %}
-  <li>
-      <strong>{{ item.name }}</strong> - {{ item.description }} - ${{ item.price }} - <a href="{% url 'menu_item' item.id %}">View Details</a>
-  </li>
-  {% empty %}
-  <li>No menu items available.</li>
-  {% endfor %}
+{% for item in menu_items %}
+<li>
+  <img src="{{ item.image_url }}" alt="{{ item.name }}" class="menu-image">
+  <strong>{{ item.name }}</strong> - {{ item.description }} - ${{ item.price }} - <a href="{% url 'menu_item' item.id %}">View Details</a>
+</li>
+{% empty %}
+<li>No menu items available.</li>
+{% endfor %}
 </ul>
 
 {% endblock content %}

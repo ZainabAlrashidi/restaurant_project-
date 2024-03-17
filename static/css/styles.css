@@ -32,7 +32,6 @@ body {
     color: white;
     text-align: center;
     padding: 20px 0;
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -52,4 +51,27 @@ body {
 }
 .footer-content a:hover {
     color: #ff6347;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+tr:nth-child(even){background-color: #f9f9f9;}
+tr:hover {background-color: #ddd;}
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+.menu-image {
+    width: 100px; 
+    height: 100px;
 }
