@@ -1,20 +1,36 @@
 {% extends "layouts/base.html" %}
-
-{% block title %}{{ item.name }} - Menu Item Details{% endblock %}
-
 {% block content %}
-<article>
+
+
+<article class="item-details">
     <header>
-        <h1 style="color: #336699;">{{ item.name }}</h1>
+        <h1>{{ item.name }}</h1>
+        <img src="{{ item.image_url }}" alt="{{ item.name }}" class="item-image">
     </header>
     
     <section>
         <h2>Description</h2>
-        <p style="font-style: italic; margin-left: 20px;">{{ item.description }}</p>
+        <p class="description">{{ item.description }}</p>
     </section>
 
     <footer>
-        <p><strong>Price:</strong> <span style="color: green;">${{ item.price }}</span></p>
+        <p><strong>Price:</strong> <span class="price">${{ item.price }}</span></p>
     </footer>
+
+    <div class="order-form">
+        <h2>Order Now</h2>
+        <form action="/order" method="post">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" min="1" placeholder="Enter quantity">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+
+            <label for="address">Address</label>
+            <textarea id="address" name="address" cols="30" rows="4" placeholder="Enter your address"></textarea>
+
+            <button type="submit">Add to Cart</button>
+        </form>
+    </div>
 </article>
 {% endblock content %}
