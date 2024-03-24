@@ -3,9 +3,24 @@
 {% block title %}Menu List{% endblock %}
 
 {% block content %}
+
 <h1>Our Menu</h1>
 
 
+<form method="get" class="order-form" action="{% url 'menu_list' %}">
+    <label for="search_name">Search by Name:</label>
+    <input type="text" id="search_name" name="search_name" value="{{ request.GET.search_name }}">
+
+    <label for="meal_type">Meal Type:</label>
+    <select id="meal_type" name="meal_type">
+        <option value="">All Types</option>
+        <option value="Appetizer" {% if request.GET.meal_type == "Appetizer" %}selected{% endif %}>Appetizer</option>
+        <option value="Main Course" {% if request.GET.meal_type == "Main Course" %}selected{% endif %}>Main Course</option>
+        <option value="Dessert" {% if request.GET.meal_type == "Dessert" %}selected{% endif %}>Dessert</option>
+    </select>
+
+    <input type="submit" value="Search">
+</form>
 
 
 <table >
@@ -35,15 +50,5 @@
 </tbody>
 </table>
 
-<ul>
-{% for item in menu_items %}
-<li>
-  <img src="{{ item.image_url }}" alt="{{ item.name }}" class="menu-image">
-  <strong>{{ item.name }}</strong> - {{ item.description }} - ${{ item.price }} - <a href="{% url 'menu_item' item.id %}">View Details</a>
-</li>
-{% empty %}
-<li>No menu items available.</li>
-{% endfor %}
-</ul>
 
 {% endblock content %}
