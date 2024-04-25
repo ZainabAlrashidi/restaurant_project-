@@ -6,6 +6,7 @@
 
 <h1>Our Menu</h1>
 
+<a href="{% url 'add_menu_item' %}" class="btn btn-primary">Add New Item</a>
 
 <form method="get" class="order-form" action="{% url 'menu_list' %}">
     <label for="search_name">Search by Name:</label>
@@ -40,8 +41,11 @@
         <td>{{ item.name }}</td>
         <td>{{ item.description }}</td>
         <td>${{ item.price }}</td>
-        <td><a href="{% url 'menu_item' item.id %}">View Details</a></td>
-    </tr>
+        <td>
+            <a href="{% url 'menu_item' item.id %}">View Details</a>
+            | <a href="{% url 'edit_menu_item' item.id %}" class="btn btn-secondary">Edit</a>
+        </td>
+        </tr>
     {% empty %}
     <tr>
         <td colspan="5">No menu items available.</td>

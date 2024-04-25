@@ -98,24 +98,24 @@ a {
     font-weight: bold;
     color: #28a745;
 }
-.order-form {
+form {
     background-color: #f8f9fa;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 30px;
 }
-.order-form h2 {
+form h2 {
     color: #333;
 }
-.order-form label {
+form label {
     display: block;
     margin-top: 10px;
     color: #333;
 }
-.order-form input,
-.order-form textarea,
-.order-form button {
+form input,
+form textarea,
+form button {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -123,14 +123,14 @@ a {
     border-radius: 4px;
     box-sizing: border-box;
 }
-.order-form button {
+form button {
     background-color: #28a745;
     color: white;
     border-color: #28a745;
     margin-top: 20px;
     cursor: pointer;
 }
-.order-form button:hover {
+form button:hover {
     background-color: #218838;
     border-color: #1e7e34;
 }

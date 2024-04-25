@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<h1>Add New Menu Item</h1>
+<form method="post" action="{% url 'add_menu_item' %}">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea><br>
+
+    <label for="image_url">Image URL:</label>
+    <input type="url" id="image_url" name="image_url" required><br>
+
+    <label for="meal_type">Meal Type:</label>
+    <select id="meal_type" name="meal_type" required>
+        <option value="Appetizer">Appetizer</option>
+        <option value="Main Course">Main Course</option>
+        <option value="Dessert">Dessert</option>
+    </select><br>
+
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price" required><br>
+
+    <button type="submit">Add Item</button>
+</form>
+{% endblock %}
