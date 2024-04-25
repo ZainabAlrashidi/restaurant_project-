@@ -10,17 +10,20 @@ def index(request):
 def menu_list(request):
     search_query = request.GET.get('search_name', '')
     meal_type_query = request.GET.get('meal_type', '')
+    sort_by = request.GET.get('sort', 'name')  # Default sorting by name
 
     all_menu_items = MenuItem.objects.all()
 
     if search_query:
         all_menu_items = all_menu_items.filter(name__icontains=search_query)
-
     if meal_type_query:
         all_menu_items = all_menu_items.filter(meal_type=meal_type_query)
 
+    all_menu_items = all_menu_items.order_by(sort_by)
+
     context = {'menu_items': all_menu_items}
     return render(request, 'restaurantModule/menu_list.html', context)
+
 
 def menu_item(request, item_id):
     try:
