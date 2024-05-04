@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import MenuItem
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
+from .forms import MenuItemForm
 
 
 
@@ -37,27 +38,31 @@ def menu_item(request, item_id):
     
     context = {'item': targetItem}
     return render(request, 'restaurantModule/menu_item.html', context)
+
+# views.py
+
+
 @csrf_exempt
 def add_menu_item(request):
     if request.method == 'POST':
-        MenuItem.objects.create(
-            name=request.POST['name'],
-            description=request.POST['description'],
-            image_url=request.POST['image_url'],
-            meal_type=request.POST['meal_type'],
-            price=request.POST['price']
-        )
-        return HttpResponseRedirect('/menu_list')
-    return render(request, 'restaurantModule/add_menu_item.html')
+        form = MenuItemForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/menu_list')
+    else:
+        form = MenuItemForm()
+    return render(request, 'restaurantModule/add_menu_item.html', {'form': form})
+
+
 @csrf_exempt
 def edit_menu_item(request, item_id):
     item = MenuItem.objects.get(id=item_id)
+    print(item)
     if request.method == 'POST':
-        item.name = request.POST['name']
-        item.description = request.POST['description']
-        item.image_url = request.POST['image_url']
-        item.meal_type = request.POST['meal_type']
-        item.price = request.POST['price']
-        item.save()
-        return HttpResponseRedirect('/menu_list')
-    return render(request, 'restaurantModule/edit_menu_item.html', {'item': item})
+        form = MenuItemForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/menu_list')  
+    else:
+        form = MenuItemForm(instance=item)
+    return render(request, 'restaurantModule/edit_menu_item.html', {'form': form})
